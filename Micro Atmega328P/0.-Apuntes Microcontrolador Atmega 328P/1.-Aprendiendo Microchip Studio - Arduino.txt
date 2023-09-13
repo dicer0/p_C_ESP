@@ -1,0 +1,8 @@
+ORIGINAL:
+C:\Users\diego\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/bin/avrdude
+-CC:\Users\diego\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/etc/avrdude.conf -v -patmega328p -carduino -PCOM7 -b115200 -D -Uflash:w:C:\Users\diego\AppData\Local\Temp\arduino_build_467539/Blink.ino.hex:i
+
+
+MODIFICADO:
+C:\Users\diego\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/bin/avrdude.exe
+-C"C:\Users\diego\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/etc/avrdude.conf" -v -patmega328p -carduino -PCOM7 -b115200 -D -Uflash:w:$(TargetDir)$(TargetName).hex:i

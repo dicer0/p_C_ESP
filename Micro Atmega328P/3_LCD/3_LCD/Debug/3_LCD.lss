@@ -1,0 +1,797 @@
+
+3_LCD.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000020  00800100  0000059a  0000060e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000059a  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  0000062e  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000660  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000b8  00000000  00000000  000006a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001aa6  00000000  00000000  00000758  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000767  00000000  00000000  000021fe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000082d  00000000  00000000  00002965  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000168  00000000  00000000  00003194  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000063f  00000000  00000000  000032fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000010c7  00000000  00000000  0000393b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000a8  00000000  00000000  00004a02  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea e9       	ldi	r30, 0x9A	; 154
+  7c:	f5 e0       	ldi	r31, 0x05	; 5
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 32       	cpi	r26, 0x20	; 32
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 7d 02 	call	0x4fa	; 0x4fa <main>
+  8e:	0c 94 cb 02 	jmp	0x596	; 0x596 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <_Z9ENVIA_CMDc>:
+//POS_LINEA4: Se refiere a la segunda l√≠nea de 16 caracteres que se ve solamente cuando la pantalla es din√°mica, ya que se encuentra justo alado de la posici√≥n 2.
+void POS_LINEA4(char posicion){
+	char linea4 = 0xD4; //0xD4 = 1101 0100
+	//M√ÅSCARA OR: Convierte en 1 todo lo que est√© en contacto con los 1 de la m√°scara y deja pasar tal cual lo que est√© en contacto con los 0 de la m√°scara.
+	posicion = posicion | linea4;
+	ENVIA_CMD(posicion);
+  96:	28 2f       	mov	r18, r24
+  98:	20 7f       	andi	r18, 0xF0	; 240
+  9a:	30 e0       	ldi	r19, 0x00	; 0
+  9c:	35 95       	asr	r19
+  9e:	27 95       	ror	r18
+  a0:	35 95       	asr	r19
+  a2:	27 95       	ror	r18
+  a4:	28 b9       	out	0x08, r18	; 8
+  a6:	98 b1       	in	r25, 0x08	; 8
+  a8:	9e 7f       	andi	r25, 0xFE	; 254
+  aa:	98 b9       	out	0x08, r25	; 8
+  ac:	98 b1       	in	r25, 0x08	; 8
+  ae:	92 60       	ori	r25, 0x02	; 2
+  b0:	98 b9       	out	0x08, r25	; 8
+  b2:	ef e9       	ldi	r30, 0x9F	; 159
+  b4:	ff e0       	ldi	r31, 0x0F	; 15
+  b6:	31 97       	sbiw	r30, 0x01	; 1
+  b8:	f1 f7       	brne	.-4      	; 0xb6 <_Z9ENVIA_CMDc+0x20>
+  ba:	00 c0       	rjmp	.+0      	; 0xbc <_Z9ENVIA_CMDc+0x26>
+  bc:	00 00       	nop
+  be:	98 b1       	in	r25, 0x08	; 8
+  c0:	9d 7f       	andi	r25, 0xFD	; 253
+  c2:	98 b9       	out	0x08, r25	; 8
+  c4:	ef e3       	ldi	r30, 0x3F	; 63
+  c6:	fc e9       	ldi	r31, 0x9C	; 156
+  c8:	31 97       	sbiw	r30, 0x01	; 1
+  ca:	f1 f7       	brne	.-4      	; 0xc8 <_Z9ENVIA_CMDc+0x32>
+  cc:	00 c0       	rjmp	.+0      	; 0xce <_Z9ENVIA_CMDc+0x38>
+  ce:	00 00       	nop
+  d0:	90 e0       	ldi	r25, 0x00	; 0
+  d2:	88 0f       	add	r24, r24
+  d4:	99 1f       	adc	r25, r25
+  d6:	88 0f       	add	r24, r24
+  d8:	99 1f       	adc	r25, r25
+  da:	8c 73       	andi	r24, 0x3C	; 60
+  dc:	88 b9       	out	0x08, r24	; 8
+  de:	88 b1       	in	r24, 0x08	; 8
+  e0:	8e 7f       	andi	r24, 0xFE	; 254
+  e2:	88 b9       	out	0x08, r24	; 8
+  e4:	88 b1       	in	r24, 0x08	; 8
+  e6:	82 60       	ori	r24, 0x02	; 2
+  e8:	88 b9       	out	0x08, r24	; 8
+  ea:	8f e9       	ldi	r24, 0x9F	; 159
+  ec:	9f e0       	ldi	r25, 0x0F	; 15
+  ee:	01 97       	sbiw	r24, 0x01	; 1
+  f0:	f1 f7       	brne	.-4      	; 0xee <_Z9ENVIA_CMDc+0x58>
+  f2:	00 c0       	rjmp	.+0      	; 0xf4 <_Z9ENVIA_CMDc+0x5e>
+  f4:	00 00       	nop
+  f6:	88 b1       	in	r24, 0x08	; 8
+  f8:	8d 7f       	andi	r24, 0xFD	; 253
+  fa:	88 b9       	out	0x08, r24	; 8
+  fc:	ef e3       	ldi	r30, 0x3F	; 63
+  fe:	fc e9       	ldi	r31, 0x9C	; 156
+ 100:	31 97       	sbiw	r30, 0x01	; 1
+ 102:	f1 f7       	brne	.-4      	; 0x100 <_Z9ENVIA_CMDc+0x6a>
+ 104:	00 c0       	rjmp	.+0      	; 0x106 <_Z9ENVIA_CMDc+0x70>
+ 106:	00 00       	nop
+ 108:	08 95       	ret
+
+0000010a <_Z14LCD_INICIALIZAv>:
+ 10a:	82 e0       	ldi	r24, 0x02	; 2
+ 10c:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 110:	88 e2       	ldi	r24, 0x28	; 40
+ 112:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 116:	8e e0       	ldi	r24, 0x0E	; 14
+ 118:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 11c:	86 e0       	ldi	r24, 0x06	; 6
+ 11e:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 122:	81 e0       	ldi	r24, 0x01	; 1
+ 124:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 128:	80 e8       	ldi	r24, 0x80	; 128
+ 12a:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 12e:	08 95       	ret
+
+00000130 <_Z10ENVIA_DATOc>:
+ 130:	28 2f       	mov	r18, r24
+ 132:	20 7f       	andi	r18, 0xF0	; 240
+ 134:	30 e0       	ldi	r19, 0x00	; 0
+ 136:	35 95       	asr	r19
+ 138:	27 95       	ror	r18
+ 13a:	35 95       	asr	r19
+ 13c:	27 95       	ror	r18
+ 13e:	28 b9       	out	0x08, r18	; 8
+ 140:	98 b1       	in	r25, 0x08	; 8
+ 142:	93 60       	ori	r25, 0x03	; 3
+ 144:	98 b9       	out	0x08, r25	; 8
+ 146:	ef e9       	ldi	r30, 0x9F	; 159
+ 148:	ff e0       	ldi	r31, 0x0F	; 15
+ 14a:	31 97       	sbiw	r30, 0x01	; 1
+ 14c:	f1 f7       	brne	.-4      	; 0x14a <_Z10ENVIA_DATOc+0x1a>
+ 14e:	00 c0       	rjmp	.+0      	; 0x150 <_Z10ENVIA_DATOc+0x20>
+ 150:	00 00       	nop
+ 152:	98 b1       	in	r25, 0x08	; 8
+ 154:	9d 7f       	andi	r25, 0xFD	; 253
+ 156:	98 b9       	out	0x08, r25	; 8
+ 158:	98 b1       	in	r25, 0x08	; 8
+ 15a:	9e 7f       	andi	r25, 0xFE	; 254
+ 15c:	98 b9       	out	0x08, r25	; 8
+ 15e:	ef e3       	ldi	r30, 0x3F	; 63
+ 160:	fc e9       	ldi	r31, 0x9C	; 156
+ 162:	31 97       	sbiw	r30, 0x01	; 1
+ 164:	f1 f7       	brne	.-4      	; 0x162 <_Z10ENVIA_DATOc+0x32>
+ 166:	00 c0       	rjmp	.+0      	; 0x168 <_Z10ENVIA_DATOc+0x38>
+ 168:	00 00       	nop
+ 16a:	90 e0       	ldi	r25, 0x00	; 0
+ 16c:	88 0f       	add	r24, r24
+ 16e:	99 1f       	adc	r25, r25
+ 170:	88 0f       	add	r24, r24
+ 172:	99 1f       	adc	r25, r25
+ 174:	8c 73       	andi	r24, 0x3C	; 60
+ 176:	88 b9       	out	0x08, r24	; 8
+ 178:	88 b1       	in	r24, 0x08	; 8
+ 17a:	83 60       	ori	r24, 0x03	; 3
+ 17c:	88 b9       	out	0x08, r24	; 8
+ 17e:	8f e9       	ldi	r24, 0x9F	; 159
+ 180:	9f e0       	ldi	r25, 0x0F	; 15
+ 182:	01 97       	sbiw	r24, 0x01	; 1
+ 184:	f1 f7       	brne	.-4      	; 0x182 <_Z10ENVIA_DATOc+0x52>
+ 186:	00 c0       	rjmp	.+0      	; 0x188 <_Z10ENVIA_DATOc+0x58>
+ 188:	00 00       	nop
+ 18a:	88 b1       	in	r24, 0x08	; 8
+ 18c:	8d 7f       	andi	r24, 0xFD	; 253
+ 18e:	88 b9       	out	0x08, r24	; 8
+ 190:	88 b1       	in	r24, 0x08	; 8
+ 192:	8e 7f       	andi	r24, 0xFE	; 254
+ 194:	88 b9       	out	0x08, r24	; 8
+ 196:	ef e3       	ldi	r30, 0x3F	; 63
+ 198:	fc e9       	ldi	r31, 0x9C	; 156
+ 19a:	31 97       	sbiw	r30, 0x01	; 1
+ 19c:	f1 f7       	brne	.-4      	; 0x19a <_Z10ENVIA_DATOc+0x6a>
+ 19e:	00 c0       	rjmp	.+0      	; 0x1a0 <_Z10ENVIA_DATOc+0x70>
+ 1a0:	00 00       	nop
+ 1a2:	08 95       	ret
+
+000001a4 <_Z12ENVIA_CADENAPKc>:
+ 1a4:	0f 93       	push	r16
+ 1a6:	1f 93       	push	r17
+ 1a8:	cf 93       	push	r28
+ 1aa:	df 93       	push	r29
+ 1ac:	8c 01       	movw	r16, r24
+ 1ae:	c0 e0       	ldi	r28, 0x00	; 0
+ 1b0:	d0 e0       	ldi	r29, 0x00	; 0
+ 1b2:	f8 01       	movw	r30, r16
+ 1b4:	ec 0f       	add	r30, r28
+ 1b6:	fd 1f       	adc	r31, r29
+ 1b8:	80 81       	ld	r24, Z
+ 1ba:	88 23       	and	r24, r24
+ 1bc:	21 f0       	breq	.+8      	; 0x1c6 <_Z12ENVIA_CADENAPKc+0x22>
+ 1be:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 1c2:	21 96       	adiw	r28, 0x01	; 1
+ 1c4:	f6 cf       	rjmp	.-20     	; 0x1b2 <_Z12ENVIA_CADENAPKc+0xe>
+ 1c6:	df 91       	pop	r29
+ 1c8:	cf 91       	pop	r28
+ 1ca:	1f 91       	pop	r17
+ 1cc:	0f 91       	pop	r16
+ 1ce:	08 95       	ret
+
+000001d0 <_Z8CAR_ESP0v>:
+ 1d0:	80 e4       	ldi	r24, 0x40	; 64
+ 1d2:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 1d6:	8f e9       	ldi	r24, 0x9F	; 159
+ 1d8:	9f e0       	ldi	r25, 0x0F	; 15
+ 1da:	01 97       	sbiw	r24, 0x01	; 1
+ 1dc:	f1 f7       	brne	.-4      	; 0x1da <_Z8CAR_ESP0v+0xa>
+ 1de:	00 c0       	rjmp	.+0      	; 0x1e0 <_Z8CAR_ESP0v+0x10>
+ 1e0:	00 00       	nop
+ 1e2:	80 e0       	ldi	r24, 0x00	; 0
+ 1e4:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 1e8:	8f e9       	ldi	r24, 0x9F	; 159
+ 1ea:	9f e0       	ldi	r25, 0x0F	; 15
+ 1ec:	01 97       	sbiw	r24, 0x01	; 1
+ 1ee:	f1 f7       	brne	.-4      	; 0x1ec <_Z8CAR_ESP0v+0x1c>
+ 1f0:	00 c0       	rjmp	.+0      	; 0x1f2 <_Z8CAR_ESP0v+0x22>
+ 1f2:	00 00       	nop
+ 1f4:	8f e1       	ldi	r24, 0x1F	; 31
+ 1f6:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 1fa:	8f e9       	ldi	r24, 0x9F	; 159
+ 1fc:	9f e0       	ldi	r25, 0x0F	; 15
+ 1fe:	01 97       	sbiw	r24, 0x01	; 1
+ 200:	f1 f7       	brne	.-4      	; 0x1fe <_Z8CAR_ESP0v+0x2e>
+ 202:	00 c0       	rjmp	.+0      	; 0x204 <_Z8CAR_ESP0v+0x34>
+ 204:	00 00       	nop
+ 206:	81 e1       	ldi	r24, 0x11	; 17
+ 208:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 20c:	8f e9       	ldi	r24, 0x9F	; 159
+ 20e:	9f e0       	ldi	r25, 0x0F	; 15
+ 210:	01 97       	sbiw	r24, 0x01	; 1
+ 212:	f1 f7       	brne	.-4      	; 0x210 <_Z8CAR_ESP0v+0x40>
+ 214:	00 c0       	rjmp	.+0      	; 0x216 <_Z8CAR_ESP0v+0x46>
+ 216:	00 00       	nop
+ 218:	8b e1       	ldi	r24, 0x1B	; 27
+ 21a:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 21e:	8f e9       	ldi	r24, 0x9F	; 159
+ 220:	9f e0       	ldi	r25, 0x0F	; 15
+ 222:	01 97       	sbiw	r24, 0x01	; 1
+ 224:	f1 f7       	brne	.-4      	; 0x222 <_Z8CAR_ESP0v+0x52>
+ 226:	00 c0       	rjmp	.+0      	; 0x228 <_Z8CAR_ESP0v+0x58>
+ 228:	00 00       	nop
+ 22a:	8e e0       	ldi	r24, 0x0E	; 14
+ 22c:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 230:	8f e9       	ldi	r24, 0x9F	; 159
+ 232:	9f e0       	ldi	r25, 0x0F	; 15
+ 234:	01 97       	sbiw	r24, 0x01	; 1
+ 236:	f1 f7       	brne	.-4      	; 0x234 <_Z8CAR_ESP0v+0x64>
+ 238:	00 c0       	rjmp	.+0      	; 0x23a <_Z8CAR_ESP0v+0x6a>
+ 23a:	00 00       	nop
+ 23c:	84 e0       	ldi	r24, 0x04	; 4
+ 23e:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 242:	8f e9       	ldi	r24, 0x9F	; 159
+ 244:	9f e0       	ldi	r25, 0x0F	; 15
+ 246:	01 97       	sbiw	r24, 0x01	; 1
+ 248:	f1 f7       	brne	.-4      	; 0x246 <_Z8CAR_ESP0v+0x76>
+ 24a:	00 c0       	rjmp	.+0      	; 0x24c <_Z8CAR_ESP0v+0x7c>
+ 24c:	00 00       	nop
+ 24e:	80 e0       	ldi	r24, 0x00	; 0
+ 250:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 254:	8f e9       	ldi	r24, 0x9F	; 159
+ 256:	9f e0       	ldi	r25, 0x0F	; 15
+ 258:	01 97       	sbiw	r24, 0x01	; 1
+ 25a:	f1 f7       	brne	.-4      	; 0x258 <_Z8CAR_ESP0v+0x88>
+ 25c:	00 c0       	rjmp	.+0      	; 0x25e <_Z8CAR_ESP0v+0x8e>
+ 25e:	00 00       	nop
+ 260:	80 e0       	ldi	r24, 0x00	; 0
+ 262:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 266:	8f e9       	ldi	r24, 0x9F	; 159
+ 268:	9f e0       	ldi	r25, 0x0F	; 15
+ 26a:	01 97       	sbiw	r24, 0x01	; 1
+ 26c:	f1 f7       	brne	.-4      	; 0x26a <_Z8CAR_ESP0v+0x9a>
+ 26e:	00 c0       	rjmp	.+0      	; 0x270 <_Z8CAR_ESP0v+0xa0>
+ 270:	00 00       	nop
+ 272:	08 95       	ret
+
+00000274 <_Z8CAR_ESP1v>:
+ 274:	88 e4       	ldi	r24, 0x48	; 72
+ 276:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 27a:	8f e9       	ldi	r24, 0x9F	; 159
+ 27c:	9f e0       	ldi	r25, 0x0F	; 15
+ 27e:	01 97       	sbiw	r24, 0x01	; 1
+ 280:	f1 f7       	brne	.-4      	; 0x27e <_Z8CAR_ESP1v+0xa>
+ 282:	00 c0       	rjmp	.+0      	; 0x284 <_Z8CAR_ESP1v+0x10>
+ 284:	00 00       	nop
+ 286:	80 e0       	ldi	r24, 0x00	; 0
+ 288:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 28c:	8f e9       	ldi	r24, 0x9F	; 159
+ 28e:	9f e0       	ldi	r25, 0x0F	; 15
+ 290:	01 97       	sbiw	r24, 0x01	; 1
+ 292:	f1 f7       	brne	.-4      	; 0x290 <_Z8CAR_ESP1v+0x1c>
+ 294:	00 c0       	rjmp	.+0      	; 0x296 <_Z8CAR_ESP1v+0x22>
+ 296:	00 00       	nop
+ 298:	8a e0       	ldi	r24, 0x0A	; 10
+ 29a:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 29e:	8f e9       	ldi	r24, 0x9F	; 159
+ 2a0:	9f e0       	ldi	r25, 0x0F	; 15
+ 2a2:	01 97       	sbiw	r24, 0x01	; 1
+ 2a4:	f1 f7       	brne	.-4      	; 0x2a2 <_Z8CAR_ESP1v+0x2e>
+ 2a6:	00 c0       	rjmp	.+0      	; 0x2a8 <_Z8CAR_ESP1v+0x34>
+ 2a8:	00 00       	nop
+ 2aa:	8a e0       	ldi	r24, 0x0A	; 10
+ 2ac:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 2b0:	8f e9       	ldi	r24, 0x9F	; 159
+ 2b2:	9f e0       	ldi	r25, 0x0F	; 15
+ 2b4:	01 97       	sbiw	r24, 0x01	; 1
+ 2b6:	f1 f7       	brne	.-4      	; 0x2b4 <_Z8CAR_ESP1v+0x40>
+ 2b8:	00 c0       	rjmp	.+0      	; 0x2ba <_Z8CAR_ESP1v+0x46>
+ 2ba:	00 00       	nop
+ 2bc:	8a e0       	ldi	r24, 0x0A	; 10
+ 2be:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 2c2:	8f e9       	ldi	r24, 0x9F	; 159
+ 2c4:	9f e0       	ldi	r25, 0x0F	; 15
+ 2c6:	01 97       	sbiw	r24, 0x01	; 1
+ 2c8:	f1 f7       	brne	.-4      	; 0x2c6 <_Z8CAR_ESP1v+0x52>
+ 2ca:	00 c0       	rjmp	.+0      	; 0x2cc <_Z8CAR_ESP1v+0x58>
+ 2cc:	00 00       	nop
+ 2ce:	80 e0       	ldi	r24, 0x00	; 0
+ 2d0:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 2d4:	8f e9       	ldi	r24, 0x9F	; 159
+ 2d6:	9f e0       	ldi	r25, 0x0F	; 15
+ 2d8:	01 97       	sbiw	r24, 0x01	; 1
+ 2da:	f1 f7       	brne	.-4      	; 0x2d8 <_Z8CAR_ESP1v+0x64>
+ 2dc:	00 c0       	rjmp	.+0      	; 0x2de <_Z8CAR_ESP1v+0x6a>
+ 2de:	00 00       	nop
+ 2e0:	81 e1       	ldi	r24, 0x11	; 17
+ 2e2:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 2e6:	8f e9       	ldi	r24, 0x9F	; 159
+ 2e8:	9f e0       	ldi	r25, 0x0F	; 15
+ 2ea:	01 97       	sbiw	r24, 0x01	; 1
+ 2ec:	f1 f7       	brne	.-4      	; 0x2ea <_Z8CAR_ESP1v+0x76>
+ 2ee:	00 c0       	rjmp	.+0      	; 0x2f0 <_Z8CAR_ESP1v+0x7c>
+ 2f0:	00 00       	nop
+ 2f2:	8e e0       	ldi	r24, 0x0E	; 14
+ 2f4:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 2f8:	8f e9       	ldi	r24, 0x9F	; 159
+ 2fa:	9f e0       	ldi	r25, 0x0F	; 15
+ 2fc:	01 97       	sbiw	r24, 0x01	; 1
+ 2fe:	f1 f7       	brne	.-4      	; 0x2fc <_Z8CAR_ESP1v+0x88>
+ 300:	00 c0       	rjmp	.+0      	; 0x302 <_Z8CAR_ESP1v+0x8e>
+ 302:	00 00       	nop
+ 304:	80 e0       	ldi	r24, 0x00	; 0
+ 306:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 30a:	8f e9       	ldi	r24, 0x9F	; 159
+ 30c:	9f e0       	ldi	r25, 0x0F	; 15
+ 30e:	01 97       	sbiw	r24, 0x01	; 1
+ 310:	f1 f7       	brne	.-4      	; 0x30e <_Z8CAR_ESP1v+0x9a>
+ 312:	00 c0       	rjmp	.+0      	; 0x314 <_Z8CAR_ESP1v+0xa0>
+ 314:	00 00       	nop
+ 316:	08 95       	ret
+
+00000318 <_Z8CAR_ESP2v>:
+ 318:	80 e5       	ldi	r24, 0x50	; 80
+ 31a:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 31e:	8f e9       	ldi	r24, 0x9F	; 159
+ 320:	9f e0       	ldi	r25, 0x0F	; 15
+ 322:	01 97       	sbiw	r24, 0x01	; 1
+ 324:	f1 f7       	brne	.-4      	; 0x322 <_Z8CAR_ESP2v+0xa>
+ 326:	00 c0       	rjmp	.+0      	; 0x328 <_Z8CAR_ESP2v+0x10>
+ 328:	00 00       	nop
+ 32a:	80 e0       	ldi	r24, 0x00	; 0
+ 32c:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 330:	8f e9       	ldi	r24, 0x9F	; 159
+ 332:	9f e0       	ldi	r25, 0x0F	; 15
+ 334:	01 97       	sbiw	r24, 0x01	; 1
+ 336:	f1 f7       	brne	.-4      	; 0x334 <_Z8CAR_ESP2v+0x1c>
+ 338:	00 c0       	rjmp	.+0      	; 0x33a <_Z8CAR_ESP2v+0x22>
+ 33a:	00 00       	nop
+ 33c:	80 e0       	ldi	r24, 0x00	; 0
+ 33e:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 342:	8f e9       	ldi	r24, 0x9F	; 159
+ 344:	9f e0       	ldi	r25, 0x0F	; 15
+ 346:	01 97       	sbiw	r24, 0x01	; 1
+ 348:	f1 f7       	brne	.-4      	; 0x346 <_Z8CAR_ESP2v+0x2e>
+ 34a:	00 c0       	rjmp	.+0      	; 0x34c <_Z8CAR_ESP2v+0x34>
+ 34c:	00 00       	nop
+ 34e:	8b e1       	ldi	r24, 0x1B	; 27
+ 350:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 354:	8f e9       	ldi	r24, 0x9F	; 159
+ 356:	9f e0       	ldi	r25, 0x0F	; 15
+ 358:	01 97       	sbiw	r24, 0x01	; 1
+ 35a:	f1 f7       	brne	.-4      	; 0x358 <_Z8CAR_ESP2v+0x40>
+ 35c:	00 c0       	rjmp	.+0      	; 0x35e <_Z8CAR_ESP2v+0x46>
+ 35e:	00 00       	nop
+ 360:	85 e1       	ldi	r24, 0x15	; 21
+ 362:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 366:	8f e9       	ldi	r24, 0x9F	; 159
+ 368:	9f e0       	ldi	r25, 0x0F	; 15
+ 36a:	01 97       	sbiw	r24, 0x01	; 1
+ 36c:	f1 f7       	brne	.-4      	; 0x36a <_Z8CAR_ESP2v+0x52>
+ 36e:	00 c0       	rjmp	.+0      	; 0x370 <_Z8CAR_ESP2v+0x58>
+ 370:	00 00       	nop
+ 372:	81 e1       	ldi	r24, 0x11	; 17
+ 374:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 378:	8f e9       	ldi	r24, 0x9F	; 159
+ 37a:	9f e0       	ldi	r25, 0x0F	; 15
+ 37c:	01 97       	sbiw	r24, 0x01	; 1
+ 37e:	f1 f7       	brne	.-4      	; 0x37c <_Z8CAR_ESP2v+0x64>
+ 380:	00 c0       	rjmp	.+0      	; 0x382 <_Z8CAR_ESP2v+0x6a>
+ 382:	00 00       	nop
+ 384:	8a e0       	ldi	r24, 0x0A	; 10
+ 386:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 38a:	8f e9       	ldi	r24, 0x9F	; 159
+ 38c:	9f e0       	ldi	r25, 0x0F	; 15
+ 38e:	01 97       	sbiw	r24, 0x01	; 1
+ 390:	f1 f7       	brne	.-4      	; 0x38e <_Z8CAR_ESP2v+0x76>
+ 392:	00 c0       	rjmp	.+0      	; 0x394 <_Z8CAR_ESP2v+0x7c>
+ 394:	00 00       	nop
+ 396:	84 e0       	ldi	r24, 0x04	; 4
+ 398:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 39c:	8f e9       	ldi	r24, 0x9F	; 159
+ 39e:	9f e0       	ldi	r25, 0x0F	; 15
+ 3a0:	01 97       	sbiw	r24, 0x01	; 1
+ 3a2:	f1 f7       	brne	.-4      	; 0x3a0 <_Z8CAR_ESP2v+0x88>
+ 3a4:	00 c0       	rjmp	.+0      	; 0x3a6 <_Z8CAR_ESP2v+0x8e>
+ 3a6:	00 00       	nop
+ 3a8:	80 e0       	ldi	r24, 0x00	; 0
+ 3aa:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 3ae:	8f e9       	ldi	r24, 0x9F	; 159
+ 3b0:	9f e0       	ldi	r25, 0x0F	; 15
+ 3b2:	01 97       	sbiw	r24, 0x01	; 1
+ 3b4:	f1 f7       	brne	.-4      	; 0x3b2 <_Z8CAR_ESP2v+0x9a>
+ 3b6:	00 c0       	rjmp	.+0      	; 0x3b8 <_Z8CAR_ESP2v+0xa0>
+ 3b8:	00 00       	nop
+ 3ba:	08 95       	ret
+
+000003bc <_Z8CAR_ESP3v>:
+ 3bc:	88 e5       	ldi	r24, 0x58	; 88
+ 3be:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 3c2:	8f e9       	ldi	r24, 0x9F	; 159
+ 3c4:	9f e0       	ldi	r25, 0x0F	; 15
+ 3c6:	01 97       	sbiw	r24, 0x01	; 1
+ 3c8:	f1 f7       	brne	.-4      	; 0x3c6 <_Z8CAR_ESP3v+0xa>
+ 3ca:	00 c0       	rjmp	.+0      	; 0x3cc <_Z8CAR_ESP3v+0x10>
+ 3cc:	00 00       	nop
+ 3ce:	8f e1       	ldi	r24, 0x1F	; 31
+ 3d0:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 3d4:	8f e9       	ldi	r24, 0x9F	; 159
+ 3d6:	9f e0       	ldi	r25, 0x0F	; 15
+ 3d8:	01 97       	sbiw	r24, 0x01	; 1
+ 3da:	f1 f7       	brne	.-4      	; 0x3d8 <_Z8CAR_ESP3v+0x1c>
+ 3dc:	00 c0       	rjmp	.+0      	; 0x3de <_Z8CAR_ESP3v+0x22>
+ 3de:	00 00       	nop
+ 3e0:	85 e1       	ldi	r24, 0x15	; 21
+ 3e2:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 3e6:	8f e9       	ldi	r24, 0x9F	; 159
+ 3e8:	9f e0       	ldi	r25, 0x0F	; 15
+ 3ea:	01 97       	sbiw	r24, 0x01	; 1
+ 3ec:	f1 f7       	brne	.-4      	; 0x3ea <_Z8CAR_ESP3v+0x2e>
+ 3ee:	00 c0       	rjmp	.+0      	; 0x3f0 <_Z8CAR_ESP3v+0x34>
+ 3f0:	00 00       	nop
+ 3f2:	8f e1       	ldi	r24, 0x1F	; 31
+ 3f4:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 3f8:	8f e9       	ldi	r24, 0x9F	; 159
+ 3fa:	9f e0       	ldi	r25, 0x0F	; 15
+ 3fc:	01 97       	sbiw	r24, 0x01	; 1
+ 3fe:	f1 f7       	brne	.-4      	; 0x3fc <_Z8CAR_ESP3v+0x40>
+ 400:	00 c0       	rjmp	.+0      	; 0x402 <__EEPROM_REGION_LENGTH__+0x2>
+ 402:	00 00       	nop
+ 404:	8f e1       	ldi	r24, 0x1F	; 31
+ 406:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 40a:	8f e9       	ldi	r24, 0x9F	; 159
+ 40c:	9f e0       	ldi	r25, 0x0F	; 15
+ 40e:	01 97       	sbiw	r24, 0x01	; 1
+ 410:	f1 f7       	brne	.-4      	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+ 412:	00 c0       	rjmp	.+0      	; 0x414 <__EEPROM_REGION_LENGTH__+0x14>
+ 414:	00 00       	nop
+ 416:	8f e1       	ldi	r24, 0x1F	; 31
+ 418:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 41c:	8f e9       	ldi	r24, 0x9F	; 159
+ 41e:	9f e0       	ldi	r25, 0x0F	; 15
+ 420:	01 97       	sbiw	r24, 0x01	; 1
+ 422:	f1 f7       	brne	.-4      	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+ 424:	00 c0       	rjmp	.+0      	; 0x426 <__EEPROM_REGION_LENGTH__+0x26>
+ 426:	00 00       	nop
+ 428:	8a e0       	ldi	r24, 0x0A	; 10
+ 42a:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 42e:	8f e9       	ldi	r24, 0x9F	; 159
+ 430:	9f e0       	ldi	r25, 0x0F	; 15
+ 432:	01 97       	sbiw	r24, 0x01	; 1
+ 434:	f1 f7       	brne	.-4      	; 0x432 <__EEPROM_REGION_LENGTH__+0x32>
+ 436:	00 c0       	rjmp	.+0      	; 0x438 <__EEPROM_REGION_LENGTH__+0x38>
+ 438:	00 00       	nop
+ 43a:	8a e0       	ldi	r24, 0x0A	; 10
+ 43c:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 440:	8f e9       	ldi	r24, 0x9F	; 159
+ 442:	9f e0       	ldi	r25, 0x0F	; 15
+ 444:	01 97       	sbiw	r24, 0x01	; 1
+ 446:	f1 f7       	brne	.-4      	; 0x444 <__EEPROM_REGION_LENGTH__+0x44>
+ 448:	00 c0       	rjmp	.+0      	; 0x44a <__EEPROM_REGION_LENGTH__+0x4a>
+ 44a:	00 00       	nop
+ 44c:	8b e1       	ldi	r24, 0x1B	; 27
+ 44e:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+ 452:	8f e9       	ldi	r24, 0x9F	; 159
+ 454:	9f e0       	ldi	r25, 0x0F	; 15
+ 456:	01 97       	sbiw	r24, 0x01	; 1
+ 458:	f1 f7       	brne	.-4      	; 0x456 <__EEPROM_REGION_LENGTH__+0x56>
+ 45a:	00 c0       	rjmp	.+0      	; 0x45c <__EEPROM_REGION_LENGTH__+0x5c>
+ 45c:	00 00       	nop
+ 45e:	08 95       	ret
+
+00000460 <_Z10LIMPIA_LCDv>:
+ 460:	81 e0       	ldi	r24, 0x01	; 1
+ 462:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 466:	08 95       	ret
+
+00000468 <_Z12REGRESO_CASAv>:
+ 468:	82 e0       	ldi	r24, 0x02	; 2
+ 46a:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 46e:	08 95       	ret
+
+00000470 <_Z16CURSOR_IZQ_CORREv>:
+ 470:	80 e1       	ldi	r24, 0x10	; 16
+ 472:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 476:	08 95       	ret
+
+00000478 <_Z10POS_LINEA1c>:
+ 478:	80 68       	ori	r24, 0x80	; 128
+ 47a:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 47e:	08 95       	ret
+
+00000480 <_Z10POS_LINEA2c>:
+ 480:	80 6c       	ori	r24, 0xC0	; 192
+ 482:	0e 94 4b 00 	call	0x96	; 0x96 <_Z9ENVIA_CMDc>
+ 486:	08 95       	ret
+
+00000488 <_Z9animacionv>:
+
+
+//animacion: Funci√≥n para crear una animaci√≥n personalizada
+void animacion(){
+	//Se manda el caracter 2 a la funci√≥n ENVIA_DATO() para que se muestre en la pantalla del LCD
+	ENVIA_DATO(0); //Impresi√≥n del caracter persionalizado 1.- CARACTER PERSONALIZADO DE REACTOR ARC
+ 488:	80 e0       	ldi	r24, 0x00	; 0
+ 48a:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+	/*CURSOR_IZQ_CORRE: Permite mover el cursor hacia la izquierda del texto que tenga a la derecha, para que sobreescriba un caracter del texto mostrado en el LCD, sin mover 
+	la pantalla del LCD.
+	Si esta instrucci√≥n no se pone, se ir√° escribiendo uno tras otro los s√≠mbolos de la animaci√≥n, llenando la LCD y moviendo la pantalla.*/
+	CURSOR_IZQ_CORRE();
+ 48e:	0e 94 38 02 	call	0x470	; 0x470 <_Z16CURSOR_IZQ_CORREv>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 492:	2f ef       	ldi	r18, 0xFF	; 255
+ 494:	89 e6       	ldi	r24, 0x69	; 105
+ 496:	98 e1       	ldi	r25, 0x18	; 24
+ 498:	21 50       	subi	r18, 0x01	; 1
+ 49a:	80 40       	sbci	r24, 0x00	; 0
+ 49c:	90 40       	sbci	r25, 0x00	; 0
+ 49e:	e1 f7       	brne	.-8      	; 0x498 <_Z9animacionv+0x10>
+ 4a0:	00 c0       	rjmp	.+0      	; 0x4a2 <_Z9animacionv+0x1a>
+ 4a2:	00 00       	nop
+	_delay_ms(500); //Retraso de 500 milisegundos despu√©s de haber impreso el caracter en pantalla y corrido el cursor hacia la izquierda.
+	//Se manda el caracter 2 a la funci√≥n ENVIA_DATO() para que se muestre en la pantalla del LCD
+	ENVIA_DATO(1); //Impresi√≥n del caracter persionalizado 2.- CARACTER PERSONALIZADO DE SONRISA
+ 4a4:	81 e0       	ldi	r24, 0x01	; 1
+ 4a6:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+	/*CURSOR_IZQ_CORRE: Permite mover el cursor hacia la izquierda del texto que tenga a la derecha, para que sobreescriba un caracter del texto mostrado en el LCD, sin mover 
+	la pantalla del LCD.
+	Si esta instrucci√≥n no se pone, se ir√° escribiendo uno tras otro los s√≠mbolos de la animaci√≥n, llenando la LCD y moviendo la pantalla.*/
+	CURSOR_IZQ_CORRE();
+ 4aa:	0e 94 38 02 	call	0x470	; 0x470 <_Z16CURSOR_IZQ_CORREv>
+ 4ae:	2f ef       	ldi	r18, 0xFF	; 255
+ 4b0:	89 e6       	ldi	r24, 0x69	; 105
+ 4b2:	98 e1       	ldi	r25, 0x18	; 24
+ 4b4:	21 50       	subi	r18, 0x01	; 1
+ 4b6:	80 40       	sbci	r24, 0x00	; 0
+ 4b8:	90 40       	sbci	r25, 0x00	; 0
+ 4ba:	e1 f7       	brne	.-8      	; 0x4b4 <_Z9animacionv+0x2c>
+ 4bc:	00 c0       	rjmp	.+0      	; 0x4be <_Z9animacionv+0x36>
+ 4be:	00 00       	nop
+	_delay_ms(500); //Retraso de 500 milisegundos despu√©s de haber impreso el caracter en pantalla y corrido el cursor hacia la izquierda.
+	//Se manda el caracter 2 a la funci√≥n ENVIA_DATO() para que se muestre en la pantalla del LCD
+	ENVIA_DATO(2); //Impresi√≥n del caracter persionalizado 3.- CARACTER PERSONALIZADO DE MONITO DE CORAZ√ìN
+ 4c0:	82 e0       	ldi	r24, 0x02	; 2
+ 4c2:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+	/*CURSOR_IZQ_CORRE: Permite mover el cursor hacia la izquierda del texto que tenga a la derecha, para que sobreescriba un caracter del texto mostrado en el LCD, sin mover 
+	la pantalla del LCD.
+	Si esta instrucci√≥n no se pone, se ir√° escribiendo uno tras otro los s√≠mbolos de la animaci√≥n, llenando la LCD y moviendo la pantalla.*/
+	CURSOR_IZQ_CORRE();
+ 4c6:	0e 94 38 02 	call	0x470	; 0x470 <_Z16CURSOR_IZQ_CORREv>
+ 4ca:	2f ef       	ldi	r18, 0xFF	; 255
+ 4cc:	89 e6       	ldi	r24, 0x69	; 105
+ 4ce:	98 e1       	ldi	r25, 0x18	; 24
+ 4d0:	21 50       	subi	r18, 0x01	; 1
+ 4d2:	80 40       	sbci	r24, 0x00	; 0
+ 4d4:	90 40       	sbci	r25, 0x00	; 0
+ 4d6:	e1 f7       	brne	.-8      	; 0x4d0 <_Z9animacionv+0x48>
+ 4d8:	00 c0       	rjmp	.+0      	; 0x4da <_Z9animacionv+0x52>
+ 4da:	00 00       	nop
+	_delay_ms(500); //Retraso de 500 milisegundos despu√©s de haber impreso el caracter en pantalla y corrido el cursor hacia la izquierda.
+	//Se manda el caracter 3 a la funci√≥n ENVIA_DATO() para que se muestre en la pantalla del LCD
+	ENVIA_DATO(3); //Impresi√≥n del caracter persionalizado 4.- CARACTER PERSONALIZADO DE T√çO COSA
+ 4dc:	83 e0       	ldi	r24, 0x03	; 3
+ 4de:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+	/*CURSOR_IZQ_CORRE: Permite mover el cursor hacia la izquierda del texto que tenga a la derecha, para que sobreescriba un caracter del texto mostrado en el LCD, sin mover 
+	la pantalla del LCD.
+	Si esta instrucci√≥n no se pone, se ir√° escribiendo uno tras otro los s√≠mbolos de la animaci√≥n, llenando la LCD y moviendo la pantalla.*/
+	CURSOR_IZQ_CORRE();
+ 4e2:	0e 94 38 02 	call	0x470	; 0x470 <_Z16CURSOR_IZQ_CORREv>
+ 4e6:	2f ef       	ldi	r18, 0xFF	; 255
+ 4e8:	89 e6       	ldi	r24, 0x69	; 105
+ 4ea:	98 e1       	ldi	r25, 0x18	; 24
+ 4ec:	21 50       	subi	r18, 0x01	; 1
+ 4ee:	80 40       	sbci	r24, 0x00	; 0
+ 4f0:	90 40       	sbci	r25, 0x00	; 0
+ 4f2:	e1 f7       	brne	.-8      	; 0x4ec <_Z9animacionv+0x64>
+ 4f4:	00 c0       	rjmp	.+0      	; 0x4f6 <_Z9animacionv+0x6e>
+ 4f6:	00 00       	nop
+ 4f8:	08 95       	ret
+
+000004fa <main>:
+ int main(void)
+ {
+	//PROGRAMACI”N DE LA M¡QUINA: Se indica por medio de los registros de funciÛn especÌfica si los pines de los puertos B, C y D ser·n entradas o salidas.
+	//0: Pin como entrada
+	//1: Pin como salida
+	DDRC=0xFF; //Todos los pines del puerto C son tomados como salidas, para mandarse hacia el LCD.
+ 4fa:	8f ef       	ldi	r24, 0xFF	; 255
+ 4fc:	87 b9       	out	0x07, r24	; 7
+	
+	/*LCD_INICIALIZA: FunciÛn para configurar el LCD a que su cursor estÈ en el inicio, exista una comunicaciÛn de 4 bits, disponga de 2 lÌneas el LCD, sus caracteres sean de
+	5X8 pixeles, su cursor sea visible y no parpadee, su incremenento de posiciÛn sea hacia la derecha, su pantalla estÈ est·tica y se manden datos al LCD, no comandos.*/
+	LCD_INICIALIZA();
+ 4fe:	0e 94 85 00 	call	0x10a	; 0x10a <_Z14LCD_INICIALIZAv>
+	
+	//LIMPIA_LCD: FunciÛn que limpia el LCD, borrando su pantalla y regresando su cursor a su posiciÛn inicial.
+	LIMPIA_LCD();
+ 502:	0e 94 30 02 	call	0x460	; 0x460 <_Z10LIMPIA_LCDv>
+	
+	//CreaciÛn del caracter especial 0 en la memoria CGRAM, que es parte de la memoria CGROM, donde se almacenan todos los sÌmbolos a mostrar
+	CAR_ESP0();
+ 506:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <_Z8CAR_ESP0v>
+ 50a:	2f ef       	ldi	r18, 0xFF	; 255
+ 50c:	81 ee       	ldi	r24, 0xE1	; 225
+ 50e:	94 e0       	ldi	r25, 0x04	; 4
+ 510:	21 50       	subi	r18, 0x01	; 1
+ 512:	80 40       	sbci	r24, 0x00	; 0
+ 514:	90 40       	sbci	r25, 0x00	; 0
+ 516:	e1 f7       	brne	.-8      	; 0x510 <main+0x16>
+ 518:	00 c0       	rjmp	.+0      	; 0x51a <main+0x20>
+ 51a:	00 00       	nop
+	_delay_ms(100);
+	
+	//CreaciÛn del caracter especial 1 en la memoria CGRAM, que es parte de la memoria CGROM, donde se almacenan todos los sÌmbolos a mostrar
+	CAR_ESP1();
+ 51c:	0e 94 3a 01 	call	0x274	; 0x274 <_Z8CAR_ESP1v>
+ 520:	2f ef       	ldi	r18, 0xFF	; 255
+ 522:	81 ee       	ldi	r24, 0xE1	; 225
+ 524:	94 e0       	ldi	r25, 0x04	; 4
+ 526:	21 50       	subi	r18, 0x01	; 1
+ 528:	80 40       	sbci	r24, 0x00	; 0
+ 52a:	90 40       	sbci	r25, 0x00	; 0
+ 52c:	e1 f7       	brne	.-8      	; 0x526 <main+0x2c>
+ 52e:	00 c0       	rjmp	.+0      	; 0x530 <main+0x36>
+ 530:	00 00       	nop
+	_delay_ms(100);
+	
+	//CreaciÛn del caracter especial 2 en la memoria CGRAM, que es parte de la memoria CGROM, donde se almacenan todos los sÌmbolos a mostrar
+	CAR_ESP2();
+ 532:	0e 94 8c 01 	call	0x318	; 0x318 <_Z8CAR_ESP2v>
+ 536:	2f ef       	ldi	r18, 0xFF	; 255
+ 538:	81 ee       	ldi	r24, 0xE1	; 225
+ 53a:	94 e0       	ldi	r25, 0x04	; 4
+ 53c:	21 50       	subi	r18, 0x01	; 1
+ 53e:	80 40       	sbci	r24, 0x00	; 0
+ 540:	90 40       	sbci	r25, 0x00	; 0
+ 542:	e1 f7       	brne	.-8      	; 0x53c <main+0x42>
+ 544:	00 c0       	rjmp	.+0      	; 0x546 <main+0x4c>
+ 546:	00 00       	nop
+	_delay_ms(100);
+	
+	//CreaciÛn del caracter especial 3 en la memoria CGRAM, que es parte de la memoria CGROM, donde se almacenan todos los sÌmbolos a mostrar
+	CAR_ESP3();
+ 548:	0e 94 de 01 	call	0x3bc	; 0x3bc <_Z8CAR_ESP3v>
+ 54c:	2f ef       	ldi	r18, 0xFF	; 255
+ 54e:	81 ee       	ldi	r24, 0xE1	; 225
+ 550:	94 e0       	ldi	r25, 0x04	; 4
+ 552:	21 50       	subi	r18, 0x01	; 1
+ 554:	80 40       	sbci	r24, 0x00	; 0
+ 556:	90 40       	sbci	r25, 0x00	; 0
+ 558:	e1 f7       	brne	.-8      	; 0x552 <main+0x58>
+ 55a:	00 c0       	rjmp	.+0      	; 0x55c <main+0x62>
+ 55c:	00 00       	nop
+	_delay_ms(100);
+	
+	//LIMPIA_LCD: FunciÛn que limpia el LCD, borrando su pantalla y regresando su cursor a su posiciÛn inicial.
+	LIMPIA_LCD();
+ 55e:	0e 94 30 02 	call	0x460	; 0x460 <_Z10LIMPIA_LCDv>
+	
+	//REGRESO_CASA: FunciÛn que regresa el cursor a su posiciÛn inicial
+	REGRESO_CASA();
+ 562:	0e 94 34 02 	call	0x468	; 0x468 <_Z12REGRESO_CASAv>
+	
+	/*POS_LINEA1: Se refiere a la primera lÌnea de 16 caracteres que se ve cuando la pantalla estÈ est·tica o din·mica, en el par·metro de la funciÛn se indica despuÈs de cual 
+	de los 16 caracteres empezar· a imprimir en pantalla el mensaje en el LCD. Puede obviarse la instrucciÛn POS_LINEA1() y funcionar· el programa, pero las posiciones de las 
+	dem·s posiciones si se deben indicar explÌcitamente.*/
+	POS_LINEA1(0);
+ 566:	80 e0       	ldi	r24, 0x00	; 0
+ 568:	0e 94 3c 02 	call	0x478	; 0x478 <_Z10POS_LINEA1c>
+	
+	/*ENVIA_CADENA: FunciÛn que ejecuta varias veces la funciÛn ENVIA_DATO, especÌficamente hasta que se encuentre con un caracter vacÌo, osea cuando ya haya recorrido cada 
+	letra o caracter de la palabra que recibe como par·metro.*/
+	ENVIA_CADENA("Diego Cervantes");
+ 56c:	80 e0       	ldi	r24, 0x00	; 0
+ 56e:	91 e0       	ldi	r25, 0x01	; 1
+ 570:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <_Z12ENVIA_CADENAPKc>
+	
+	/*POS_LINEA2: Se refiere a la segunda lÌnea de 16 caracteres que se ve cuando la pantalla estÈ est·tica o din·mica, en el par·metro de la funciÛn se indica despuÈs de cual 
+	de los 16 caracteres empezar· a imprimir en pantalla el mensaje en el LCD.*/
+	POS_LINEA2(0);
+ 574:	80 e0       	ldi	r24, 0x00	; 0
+ 576:	0e 94 40 02 	call	0x480	; 0x480 <_Z10POS_LINEA2c>
+	
+	/*ENVIA_CADENA: FunciÛn que ejecuta varias veces la funciÛn ENVIA_DATO, especÌficamente hasta que se encuentre con un caracter vacÌo, osea cuando ya haya recorrido cada 
+	letra o caracter de la palabra que recibe como par·metro.*/
+	ENVIA_CADENA("2015340042");	
+ 57a:	80 e1       	ldi	r24, 0x10	; 16
+ 57c:	91 e0       	ldi	r25, 0x01	; 1
+ 57e:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <_Z12ENVIA_CADENAPKc>
+	
+	/*ENVIA_DATO: FunciÛn que manda en dos conjuntos de 4 bits (nibble alto y nibble bajo) los 8 bits de datos y a su vez 2 bits de control en los 6 pines del puerto C, 
+	indicando asÌ el caracter a mostrar en el LCD, RS = 1; EnvÌo de datos.*/
+	ENVIA_DATO(' ');
+ 582:	80 e2       	ldi	r24, 0x20	; 32
+ 584:	0e 94 98 00 	call	0x130	; 0x130 <_Z10ENVIA_DATOc>
+	
+	/*ENVIA_CADENA: FunciÛn que ejecuta varias veces la funciÛn ENVIA_DATO, especÌficamente hasta que se encuentre con un caracter vacÌo, osea cuando ya haya recorrido cada 
+	letra o caracter de la palabra que recibe como par·metro.*/
+	ENVIA_CADENA("4MV7");
+ 588:	8b e1       	ldi	r24, 0x1B	; 27
+ 58a:	91 e0       	ldi	r25, 0x01	; 1
+ 58c:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <_Z12ENVIA_CADENAPKc>
+	
+	//animacion: FunciÛn para crear una animaciÛn personalizada, se debe crear dentro de un bucle while para que se ejecute sin fin la animaciÛn
+	while(1){
+		animacion();
+ 590:	0e 94 44 02 	call	0x488	; 0x488 <_Z9animacionv>
+ 594:	fd cf       	rjmp	.-6      	; 0x590 <main+0x96>
+
+00000596 <_exit>:
+ 596:	f8 94       	cli
+
+00000598 <__stop_program>:
+ 598:	ff cf       	rjmp	.-2      	; 0x598 <__stop_program>
